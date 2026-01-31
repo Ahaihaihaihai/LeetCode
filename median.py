@@ -8,7 +8,8 @@ class Solution(object):
         nums3 = nums1 + nums2
         nums3.sort()
         mylen = len(nums3)
+        target = mylen//2
         if mylen % 2 == 1:
-            return nums3[mylen]
+            return nums3[target]
         else:
-            return (nums3[mylen] + nums3[mylen+1]) / 2
+            return (nums3[target] + nums3[target]) / 2
