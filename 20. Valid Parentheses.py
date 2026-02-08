@@ -5,16 +5,16 @@ class Solution(object):
         :rtype: bool
         """
         check = list('')
-        for i in range(len(s)):
-            if s[i] == '(':
+        for char in s:
+            if char == '(':
                 check.append(')')
-            elif s[i] == '{':
+            elif char == '{':
                 check.append('}')
-            elif s[i] == '[':
+            elif char == '[':
                 check.append(']')
             else:
                 test = check.pop() if check else 'a'
-                if s[i] != test:
+                if char != test:
                     return False
                 
         if check:
