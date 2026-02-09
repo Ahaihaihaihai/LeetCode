@@ -7,14 +7,12 @@ class Solution(object):
         """
         left = 0
         right = len(nums) - 1
-        mid = (right - left) // 2
-        if target > max(nums):
-            return len(nums)
-        if target >= nums[mid] or target <= nums[mid + 1]:
-            return mid if target == nums[mid] else mid + 1
-        elif target >= nums[mid]:
-            return self.searchInsert(nums[mid:right],target)
-        elif target <= nums[mid]:
-            return self.searchInsert(nums[left:mid], target)
-        
-        
+        while left <= right:
+            mid = left + (right - left) //2
+            if target == nums[mid]:
+                return mid
+            elif target >= nums[mid]:
+                left = mid + 1
+            elif target <= nums[mid]:
+                right = mid - 1
+        return left
