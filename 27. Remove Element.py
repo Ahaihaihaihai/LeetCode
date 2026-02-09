@@ -5,6 +5,12 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
-        while val in nums:
-            nums.remove(val)
-        return len(nums)
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[k] = nums[i]
+                k+=1
+        return k
+        # while val in nums:
+        #    nums.remove(val)
+        # return len(nums)
