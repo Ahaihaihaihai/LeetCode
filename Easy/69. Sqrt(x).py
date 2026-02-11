@@ -1,5 +1,3 @@
-from time import sleep
-
 class Solution(object):
     def mySqrt(self, x):
         """
@@ -12,14 +10,21 @@ class Solution(object):
         mid = (right - left) // 2
         count = 0
         while left <= right:
-            print(f'L: {left}, R:{right}, M:{mid}')
+            mid = left + (right - left) // 2
             if mid ** 2 == x:
                 return mid
             elif mid ** 2 < x:
-                mid = mid + 1
+                left = mid + 1
             elif mid ** 2 > x:
-                mid = mid - 1
-            sleep(0.5)
-            
+                right = mid - 1
+        if mid ** 2 > x:
+            return mid - 1
+        else:
+            return mid
+        
 x = Solution()
+print(x.mySqrt(8))
+print(x.mySqrt(4))
+print(x.mySqrt(10))
 print(x.mySqrt(100))
+print(x.mySqrt(81))
