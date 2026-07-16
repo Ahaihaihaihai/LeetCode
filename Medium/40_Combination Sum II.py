@@ -8,15 +8,14 @@ class Solution(object):
         candidates.sort()
         hasil = []
         def backtrack(combination, target, index):
-            if target == 0:
-                if combination in hasil:
-                    return
-                else:
-                    hasil.append(combination)
+            if target == 0:    
+                hasil.append(combination)
                 return
             if target < 0:
                 return
             for i in range(index, len(candidates)):
+                if candidates[i] == candidates[i-1] and index < i:
+                    continue
                 backtrack(combination + [candidates[i]], target - candidates[i], i + 1)
         
         backtrack([], target, 0)
@@ -24,5 +23,7 @@ class Solution(object):
 
 
 x = Solution()
-hasil = x.combinationSum2([10,1,2,7,6,1,5], 8)
+mylist = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+mylist2 = [10,1,2,7,6,1,5]
+hasil = x.combinationSum2(mylist, 27)
 print(hasil)
