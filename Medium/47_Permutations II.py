@@ -5,14 +5,15 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         perm = []
+        nums.sort()
         def backtrack(combination, used):
-            if len(combination) == len(nums):
-                if combination in perm:
-                    return
-                else:
-                    perm.append(combination)
-                    return
+            if len(combination) == len(nums):        
+                perm.append(combination)
+                return
             for i in range(len(nums)):
+                if i > 0:
+                    if nums[i] == nums[i-1] and i-1 not in used:
+                        continue
                 if i not in used:
                     backtrack(combination+[nums[i]], used+[i])
         backtrack([], [])
